@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>个人简历</title>
+<style>
+  /* ===== 取自 sdyu.edu.cn 的核心样式 ===== */
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, p, blockquote, th, td, hr, button, article, aside, details, figcaption, figure, footer, header, menu, nav, section { margin: 0; padding: 0; border: 0; }
+  :focus { outline: 0; }
+  a { text-decoration: none; color: #333333; }
+  a:hover { color: #d90708; }
+  img { display: inline-block; max-width: 100%; vertical-align: middle; }
+  ul, ol { list-style: none; }
+  table { border-collapse: collapse; border-spacing: 0; }
+  i, em { font-style: normal; }
+  h4, h5, h6 { font-weight: normal; }
+  ::-webkit-scrollbar { width: 0; height: 0; }
+  ::-webkit-scrollbar-track { background: #ddd; border-radius: 5px; }
+  ::-webkit-scrollbar-thumb { background: #d90708; border-radius: 5px; }
+
+  body {
+    color: #333;
+    background: #fff;
+    position: relative;
+    overflow-x: hidden;
+    font-size: 16px;
+    font-family: Arial, -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", "Helvetica Neue", "Open Sans", "Hiragino Sans GB", sans-serif;
+  }
+
+  .trans { transition: all 0.5s; }
+  .wp { max-width: 1600px; margin: 0 auto; width: 100%; }
+
+  /* ===== 固定顶部红色导航栏 ===== */
+  .header {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 999;
+    width: 100%;
+    background: #c83a21;
+    transition: 0.5s;
+  }
+  .header:after {
+    content: ""; position: absolute; top: 0; right: 0; left: 0;
+    background: #d90708; height: 4px;
+  }
+  .header .wp {
+    display: flex; justify-content: space-between; align-items: center;
+    height: 90px; padding: 0 30px;
+  }
+  .header .logo {
+    color: #fff; font-size: 24px; font-weight: bold; letter-spacing: 1px;
+  }
+  .header .topnav ul { display: flex; align-items: center; }
+  .header .topnav ul li {
+    margin-left: 40px; font-size: 18px; position: relative; transition: 0.5s;
+  }
+  .header .topnav ul li:first-child { margin-left: 0; }
+  .header .topnav ul li > a { color: #fff; }
+  .header .topnav ul li:hover > a { color: #d90708; }
+  .header .topnav ul li .sub-nav {
+    position: absolute; top: 100%; left: 50%;
+    min-width: 150px; padding-top: 20px;
+    transform: scaleY(0) translateX(-50%);
+    opacity: 0; visibility: hidden;
+    transition: 0.5s; transform-origin: top center;
+  }
+  .header .topnav ul li .sub-nav .sub-nav-h {
+    position: relative; background: #fff;
+    padding: 15px; box-shadow: 0 0 10px rgba(0,0,0,.3);
+    border-radius: 0 0 5px 5px;
+  }
+  .header .topnav ul li .sub-nav .sub-nav-h:after {
+    content: ''; height: 3px; width: 100%;
+    position: absolute; left: 0; top: 0; background: #d90708;
+  }
+  .header .topnav ul li .sub-nav .sub-nav-h a {
+    display: block; font-size: 16px; padding: 0 10px;
+    white-space: nowrap; line-height: 35px; text-align: center; color: #333;
+  }
+  .header .topnav ul li:hover .sub-nav {
+    opacity: 1; visibility: inherit; transform: scaleY(1) translateX(-50%);
+  }
+  .header .topnav ul li .sub-nav .sub-nav-h a:hover { color: #d90708; }
+
+  /* ===== 主体内容 ===== */
+  main { padding-top: 90px; }
+  .container {
+    max-width: 1200px; margin: 40px auto; width: 100%;
+    background: #fff; border: 1px solid #eee;
+    box-shadow: 0 4px 20px rgba(0,0,0,.06);
+  }
+
+  /* 个人信息头部 */
+  .hero {
+    background: linear-gradient(135deg, #d90708 0%, #c83a21 100%);
+    color: #fff; padding: 60px 30px; text-align: center;
+    position: relative;
+  }
+  .hero:after {
+    content: ''; height: 4px; width: 100%;
+    position: absolute; left: 0; bottom: 0; background: rgba(0,0,0,.15);
+  }
+  .hero h1 { font-size: 2.2em; margin-bottom: 12px; letter-spacing: 2px; }
+  .hero p { opacity: 0.9; font-size: 1.05em; }
+  .hero .meta-line { margin-top: 10px; font-size: 0.9em; opacity: 0.85; }
+
+  /* 区块 */
+  section {
+    padding: 25px 30px; border-bottom: 1px solid #f4f3f2;
+  }
+  section:last-child { border-bottom: none; }
+  h2 {
+    color: #d90708; font-size: 1.3em; font-weight: bold;
+    margin-bottom: 18px; padding-left: 14px;
+    border-left: 4px solid #d90708; line-height: 1.2;
+  }
+  .item { margin-bottom: 18px; transition: 0.5s; }
+  .item:last-child { margin-bottom: 0; }
+  .item:hover h3 { color: #d90708; }
+  .item h3 { font-size: 1.05em; color: #1b5e20; margin-bottom: 6px; transition: 0.5s; }
+  .item .meta { font-size: 0.85em; color: #858585; margin-bottom: 6px; font-family: 'Helvetica-Condensed-Black-Se', Arial, sans-serif; }
+  .item p { font-size: 0.95em; line-height: 1.8; color: #666B76; text-align: justify; }
+
+  /* 技能标签 */
+  .skills span {
+    display: inline-block; background: #fbeaea; color: #d90708;
+    padding: 5px 14px; margin: 5px 5px 5px 0;
+    border-radius: 4px; font-size: 0.9em; transition: 0.5s;
+    border: 1px solid #f5d6d6;
+  }
+  .skills span:hover { background: #d90708; color: #fff; border-color: #d90708; }
+
+  a { color: #d90708; }
+  a:hover { text-decoration: underline; }
+
+  /* ===== 页脚 ===== */
+  footer {
+    background: #5a0202;
+    text-align: center; padding: 30px 20px;
+    color: rgba(255,255,255,.6);
+    border-top: 1px solid rgba(255,255,255,.2);
+  }
+  footer p { font-size: 16px; line-height: 1.5; }
+  footer p a { color: rgba(255,255,255,.5); font-size: 16px; }
+
+  /* 响应式 */
+  @media screen and (max-width: 1024px) {
+    .wp { padding: 0 15px; width: 100%; max-width: 100%; }
+    .header .wp { max-width: 94%; padding: 0; height: 70px; }
+    .header .logo { font-size: 20px; }
+    .header .topnav ul li { margin-left: 24px; font-size: 16px; }
+    .container { margin: 20px 10px; }
+    .hero { padding: 40px 20px; }
+    section { padding: 20px; }
+  }
+  @media screen and (max-width: 640px) {
+    .header .topnav ul li { margin-left: 16px; font-size: 14px; }
+    .header .logo { font-size: 18px; }
+    main { padding-top: 70px; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- 固定顶部红色导航栏（仿 sdyu.edu.cn） -->
+  <header class="header">
+    <div class="wp">
+      <div class="logo">个人简历</div>
+      <nav class="topnav">
+        <ul>
+          <li><a href="#info">个人信息</a></li>
+          <li>
+            <a href="#edu">教育背景</a>
+            <div class="sub-nav">
+              <div class="sub-nav-h">
+                <a href="#edu">学校简介</a>
+                <a href="#edu">主修课程</a>
+              </div>
+            </div>
+          </li>
+          <li>
+            <a href="#work">工作经历</a>
+            <div class="sub-nav">
+              <div class="sub-nav-h">
+                <a href="#work">现任职位</a>
+                <a href="#work">实习经历</a>
+              </div>
+            </div>
+          </li>
+          <li><a href="#skills">专业技能</a></li>
+          <li><a href="#project">项目经历</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <!-- 头部信息 -->
+      <div class="hero">
+        <h1>你的名字</h1>
+        <p>前端工程师 | 邮箱：your@email.com | 电话：138-xxxx-xxxx</p>
+        <p class="meta-line">籍贯：XX 省 XX 市　|　出生：199X年　|　学历：本科　|　求职意向：前端开发工程师</p>
+      </div>
+
+      <section id="info">
+        <h2>个人信息</h2>
+        <div class="item">
+          <h3>基本情况</h3>
+          <p>热爱前端开发，具备扎实的 HTML/CSS/JavaScript 基础，熟悉主流框架与工程化方案，有较强的学习能力与团队协作意识。</p>
+        </div>
+      </section>
+
+      <section id="edu">
+        <h2>教育背景</h2>
+        <div class="item">
+          <h3>XX 大学</h3>
+          <div class="meta">计算机科学与技术 · 本科 · 2014 - 2018</div>
+          <p>主修课程：数据结构、操作系统、计算机网络、Web 前端开发、数据库原理等。</p>
+        </div>
+      </section>
+
+      <section id="work">
+        <h2>工作经历</h2>
+        <div class="item">
+          <h3>XX 科技有限公司</h3>
+          <div class="meta">前端工程师 · 2020.06 - 至今</div>
+          <p>负责公司核心产品的前端开发与维护，主导多个项目的架构升级，提升页面加载性能 40%。</p>
+        </div>
+        <div class="item">
+          <h3>XX 互联网公司</h3>
+          <div class="meta">前端开发实习生 · 2018.07 - 2020.05</div>
+          <p>参与 Web 后台管理系统开发，完成多个业务模块的前端实现。</p>
+        </div>
+      </section>
+
+      <section id="skills" class="skills">
+        <h2>专业技能</h2>
+        <span>HTML/CSS</span><span>JavaScript</span><span>Vue.js</span>
+        <span>React</span><span>TypeScript</span><span>Node.js</span>
+        <span>Git</span><span>Webpack</span>
+      </section>
+
+      <section id="project">
+        <h2>项目经历</h2>
+        <div class="item">
+          <h3>电商管理后台系统</h3>
+          <div class="meta">技术栈：Vue3 + TypeScript + Element Plus</div>
+          <p>独立完成商品、订单、用户三大模块的开发，引入按需加载优化首屏加载速度。</p>
+        </div>
+      </section>
+
+      <section>
+        <h2>自我评价</h2>
+        <div class="item">
+          <p>热爱技术，具备良好的编码习惯与团队协作能力，对前端性能优化有较深入理解，乐于分享与学习新技术。</p>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- 页脚 -->
+  <footer>
+    <div class="wp">
+      <p>&copy; 2026 个人简历　|　<a href="mailto:your@email.com">your@email.com</a></p>
+    </div>
+  </footer>
+
+</body>
+</html>
